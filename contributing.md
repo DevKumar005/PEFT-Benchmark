@@ -1,196 +1,323 @@
-# Contributing to ECG Fairness-Utility Audit
+# Contributing to PEFT-Benchmark
 
-Thank you for your interest in contributing! This project aims to make healthcare AI safer and fairer — every contribution counts. 🎉
+Thank you for your interest in contributing to **PEFT-Benchmark**!
 
----
+This repository benchmarks **Full Fine-Tuning, LoRA, and QLoRA** on DistilBERT usingthe IMDB sentiment-classification task. Contributions that improve correctness, reproducibility, code quality, documentation, or benchmark coverage are welcome.
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [How Can I Contribute?](#how-can-i-contribute)
-- [Getting Started](#getting-started)
-- [Pull Request Process](#pull-request-process)
-- [Coding Standards](#coding-standards)
-- [Reporting Bugs](#reporting-bugs)
-- [Suggesting Enhancements](#suggesting-enhancements)
-- [Areas That Need Help](#areas-that-need-help)
+-   How to Contribute
 
----
+-   Getting Started
 
-## 🤝 Code of Conduct
+-   Pull Requests
 
-By participating in this project, you agree to maintain a respectful and inclusive environment. Please:
+-   Coding Standards
 
-- Use welcoming and inclusive language
-- Be respectful of differing viewpoints and experiences
-- Accept constructive criticism gracefully
-- Focus on what is best for the project and the community
+-   Reporting Bugs
 
----
+-   Suggesting Enhancements
 
-## 💡 How Can I Contribute?
+-   Areas for Contribution
 
-There are several ways to contribute, regardless of your experience level:
+-   Project Structure
 
-| Type | Examples |
-|---|---|
-| 🐛 Bug Reports | Notebook errors, incorrect metric calculations, broken visualizations |
-| 📁 New Datasets | Extending analysis other datasets |
-| 🏗️ Model Improvements | Better architectures, hyperparameter tuning, transfer learning |
-| 📝 Documentation | Fixing typos, improving explanations, adding examples |
-| 📈 Visualizations | Better plots, interactive dashboards, clearer figures |
+-   Questions
 
----
+## How to Contribute
 
-## 🚀 Getting Started
+You can contribute through:
 
-### 1. Fork & Clone
+-   **Bug fixes** — Training, evaluation, metrics, or visualization issues
+
+-   **Code improvements** — Refactoring, testing, memory tracking, or configuration
+
+-   **New methods** — DoRA, AdaLoRA, IA³, Prefix-Tuning, etc.
+
+-   **New models or datasets** — Additional architectures or classification datasets
+
+-   **Reproducibility** — Multi-seed experiments, environment files, Docker, or CI
+
+-   **Documentation** — README, docstrings, reports, and usage examples
+
+-   **Visualizations** — Improved plots or comparison dashboards
+
+For benchmark changes, document the model, dataset, method, hyperparameters, random seed, hardware, software versions, and evaluation metrics.
+
+## Getting Started
+
+### 1\. Fork and Clone
+
+Fork the repository on GitHub, then clone your fork:
 
 ```bash
-# Fork the repo on GitHub first, then:
 git clone https://github.com/DevKumar005/PEFT-Benchmark.git
 cd PEFT-Benchmark
 ```
 
-### 2. Set Up Your Environment
+### 2\. Create a Virtual Environment
 
 ```bash
-# Create a virtual environment
 python -m venv venv
-source venv/bin/activate        # On Windows: venv\Scripts\activate
+```
 
-# Install dependencies
+Activate it:
+
+Linux/macOS:
+
+```bash
+source venv/bin/activate
+```
+
+Windows:
+
+```bat
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 3. Create a Branch
+### 3\. Prepare the Dataset
 
-Always work on a new branch — never directly on `main`:
+```bash
+python data.py
+```
+
+This prepares the IMDB dataset and creates the local cache used by the project.
+
+Do not commit datasets, caches, checkpoints, or other generated artifacts unlessexplicitly required.
+
+### 4\. Create a Branch
+
+Create a descriptive branch for your changes:
 
 ```bash
 git checkout -b feature/your-feature-name
-# Examples:
-# git checkout -b feature/
-# git checkout -b docs/improve-readme
-```
-
----
-
-## 🔄 Pull Request Process
-
-1. **Ensure your changes work** — run the full notebook end-to-end before submitting
-2. **Update documentation** — update the README or docstrings if your change affects usage
-3. **Keep PRs focused** — one feature or fix per pull request
-4. **Write a clear PR description** — explain *what* you changed and *why*
-5. **Reference any related issues** — use `Closes #issue_number` in your PR description
-
-### PR Title Format
-
-```
-[TYPE] Short description of change
 ```
 
 Examples:
 
-```
-[FEAT] Add equalized odds fairness metric
-[FIX] Correct FNR calculation for female subgroup
-[DOCS] Improve dataset setup instructions
-[REFACTOR] Clean up preprocessing pipeline
-```
-
----
-
-## 🧹 Coding Standards
-
-To keep the codebase consistent:
-
-- **Python style**: Follow [PEP 8](https://pep8.org/)
-- **Notebook cells**: Keep cells short and focused; add markdown explanations between code blocks
-- **Variable names**: Use descriptive names (`false_negative_rate` not `fnr_val`)
-- **Comments**: Explain *why*, not just *what*
-
----
-
-## 🐛 Reporting Bugs
-
-Before opening a bug report, please check if the issue already exists.
-
-When filing a bug, include:
-
-1. **Environment details** — Python version, OS, package versions (`pip freeze`)
-2. **Steps to reproduce** — exact cell or code that fails
-3. **Expected behavior** — what should have happened
-4. **Actual behavior** — what actually happened, including the full error traceback
-
-Use this template when opening a bug issue:
-
-```
-Environment:
-  OS:
-  Python version:
-  TensorFlow version:
-  Key package versions (pip freeze):
-
-Steps to Reproduce:
-  1.
-  2.
-  3.
-
-Expected Behavior:
-
-Actual Behavior (include full traceback):
-
-Dataset Version:
+```bash
+git checkout -b feature/add-dora
+git checkout -b fix/qlora-memory
+git checkout -b docs/improve-readme
 ```
 
----
+## Pull Requests
 
-## ✨ Suggesting Enhancements
+Before opening a pull request:
 
-For feature requests or new ideas, open a GitHub Issue with:
+1.  Test all affected functionality.
 
-1. **Clear title** — e.g., *"Add threshold optimization as a mitigation technique"*
-2. **Motivation** — why would this be useful for fairness in ECG analysis?
-3. **Proposed approach** — how would you implement it?
-4. **References** — any papers or resources that support the idea
+2.  Run the relevant training, evaluation, or test scripts.
 
-Use this template when opening a feature request:
+3.  Update documentation when necessary.
 
+4.  Keep the PR focused on one logical change.
+
+5.  Clearly describe what changed and why.
+
+6.  Include reproducibility details for new experiments.
+
+7.  Reference related issues when applicable, for example, `Closes #123`.
+
+### PR Title Format
+
+Use a clear prefix:
+
+```plaintext
+[FEATURE] Add DoRA support
+[FIX] Correct peak VRAM measurement
+[DOCS] Improve README
+[REFACTOR] Simplify training configuration
+[TEST] Add parameter-count tests
+[VIS] Improve benchmark plots
 ```
-Summary:
 
-Motivation:
+### Benchmark Changes
 
-Proposed Approach:
+When adding or modifying benchmark results, report:
 
-References / Related Work:
+-   Model
+
+-   Dataset
+
+-   Fine-tuning method
+
+-   Hyperparameters
+
+-   Random seed(s)
+
+-   Hardware
+
+-   Relevant package versions
+
+-   Evaluation metrics
+
+Use the same evaluation methodology as existing experiments unless the PRexplicitly changes the benchmark methodology.
+
+## Coding Standards
+
+-   Follow PEP 8.
+
+-   Use clear and descriptive names.
+
+-   Keep functions focused and avoid unnecessary duplication.
+
+-   Add comments or docstrings for non-obvious logic.
+
+-   Keep training scripts consistent with the existing project structure.
+
+-   Avoid unnecessary dependencies.
+
+-   Add tests for new or modified utility functions where practical.
+
+## Reporting Bugs
+
+Search existing issues before opening a new bug report.
+
+Include:
+
+-   Operating system
+
+-   Python version
+
+-   GPU and available VRAM
+
+-   Relevant package versions
+
+-   Steps to reproduce
+
+-   Expected behavior
+
+-   Actual behavior
+
+-   Full traceback, if applicable
+
+### Bug Report Template
+
+```markdown
+## Environment
+
+- OS:
+- Python:
+- GPU:
+- torch:
+- transformers:
+- peft:
+- bitsandbytes:
+
+## Steps to Reproduce
+
+1.
+2.
+3.
+
+## Expected Behavior
+
+Describe the expected result.
+
+## Actual Behavior
+
+Describe what happened.
+
+## Error Output
+
+Paste the full traceback here, if applicable.
+
+## Additional Context
+
+Add any other relevant information.
 ```
 
----
+## Suggesting Enhancements
 
-## 🆘 Areas That Need Help
+For feature requests or benchmark improvements, open a GitHub Issue and include:
 
-If you're looking for a place to start, these are the most impactful open areas:
+-   **Summary** — What should be added or changed?
 
-- [ ] Add **equalized odds** and **demographic parity** as additional fairness metrics
-- [ ] Implement **threshold adjustment** as an alternative mitigation technique
-- [ ] Add **confidence intervals** to all reported metrics
-- [ ] Build an **interactive dashboard** (e.g., using Plotly or Streamlit) for the audit results
-- [ ] Improve **model architecture** (e.g., ResNet-1D or Transformer-based ECG model)
-- [ ] Add a `requirements-dev.txt` for development dependencies
-- [ ] Write **unit tests** for metric calculation functions
+-   **Motivation** — Why is it useful?
 
----
+-   **Proposed Approach** — How could it be implemented?
 
-## 📁 Project Structure Reminder
+-   **Expected Impact** — How would it affect the project or benchmark?
 
-When contributing, keep files in their correct locations:
+-   **References** — Relevant papers, documentation, or related issues.
 
----
+### Feature Request Template
 
-## ❓ Questions?
+```markdown
+## Summary
 
-If you're unsure about anything, open a GitHub Issue with the label `question` — let's have a chat.
+Briefly describe the proposed change.
 
----
+## Motivation
+
+Explain why it would improve the project.
+
+## Proposed Approach
+
+Describe the proposed implementation.
+
+## Expected Impact
+
+Describe the expected effect on the benchmark or workflow.
+
+## References
+
+- Paper:
+- Documentation:
+- Related issue/PR:
+```
+
+## Areas for Contribution
+
+Some useful areas include:
+
+-   Additional PEFT methods such as DoRA, AdaLoRA, IA³, and Prefix-Tuning
+
+-   Additional models and datasets
+
+-   Multi-seed experiments and confidence intervals
+
+-   Inference latency and throughput measurements
+
+-   YAML/Hydra-based configuration
+
+-   Unit and integration tests
+
+-   Docker-based reproducible environments
+
+-   Improved experiment tracking
+
+-   Better visualizations and comparison dashboards
+
+-   Improved README and documentation
+
+## Project Structure
+
+```plaintext
+PEFT-Benchmark/
+├── data.py                 # Dataset preparation
+├── train_full.py           # Full fine-tuning
+├── train_lora.py           # LoRA fine-tuning
+├── train_qlora.py          # QLoRA fine-tuning
+├── evaluate.py             # Evaluation
+├── utils.py                # Shared utilities
+├── visualize.py            # Visualization
+├── results/                # Experimental results
+├── figures/                # Generated figures
+├── report/                 # Benchmark report
+├── notebooks/              # Jupyter notebooks
+└── requirements.txt        # Python dependencies
+```
+
+Keep new files consistent with this structure. Avoid committing generated files or large artifacts unless they are intentionally tracked by the project.
+
+## Questions
+
+For general questions, open a GitHub Issue and use the `question` label when available.
