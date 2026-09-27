@@ -35,9 +35,7 @@ There are several ways to contribute, regardless of your experience level:
 | Type | Examples |
 |---|---|
 | 🐛 Bug Reports | Notebook errors, incorrect metric calculations, broken visualizations |
-| 📊 New Fairness Metrics | Equalized odds, demographic parity, calibration across groups |
-| 🧪 New Mitigation Techniques | Adversarial debiasing, re-sampling, threshold adjustment |
-| 📁 New Datasets | Extending analysis to MIMIC-IV, PhysioNet, or other ECG datasets |
+| 📁 New Datasets | Extending analysis other datasets |
 | 🏗️ Model Improvements | Better architectures, hyperparameter tuning, transfer learning |
 | 📝 Documentation | Fixing typos, improving explanations, adding examples |
 | 📈 Visualizations | Better plots, interactive dashboards, clearer figures |
