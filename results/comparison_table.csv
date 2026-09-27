@@ -1,0 +1,4 @@
+Method,Trainable Params,Trainable %,Training Time (s),Peak VRAM (MB),Test Accuracy,Test F1
+Full Fine-Tuning,"66,955,010",100.00%,105.76,1720.34,0.886,0.886
+LoRA,"739,586",1.09%,61.4,995.7,0.872,0.872
+QLoRA (4-bit),"739,586",1.59%,85.26,966.32,0.867,0.867

@@ -1,0 +1,16 @@
+# Large datasets and token caches
+data_cache/
+
+# PyTorch checkpoints and weight tensors
+results/*/checkpoints/
+*.pt
+*.bin
+*.safetensors
+*.pth
+*.zip
+
+# Python and Jupyter artifacts
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
