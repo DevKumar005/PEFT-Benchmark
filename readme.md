@@ -106,7 +106,7 @@ python -m venv venv
 
 Activate the environment:
 
-**Linux/macOS:**
+**Linux or macOS:**
 
 ```bash
 source venv/bin/activate
